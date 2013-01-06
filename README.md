@@ -28,3 +28,7 @@ Notes & limitations
 -------------------
 * Redirects only and does not reproject. Thus, make sure that the WMS server supports `EPSG:900913` (or aliases, then use `?srs={srs}`)
 * No caching
+
+License
+-------
+GNU Public License
