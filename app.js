@@ -14,32 +14,19 @@ app.get('/tms/:z/:x/:y/:layers/*', function(req, res){
   var x = parseInt(req.params.x),
       y = parseInt(req.params.y),
       z = parseInt(req.params.z);
-  // for Google/OSM tile scheme we need to alter the y:
-  y = ((1 << z) - y - 1);
-  // calculate the bbox, build up the other params
-  var bbox = get_tile_bbox(x, y, z),
-      format = 'image/png',
-      service = 'WMS',
-      version = '1.1.1',
-      request = 'GetMap',
-      srs = req.query.srs || 'EPSG:900913',
-      width = '256',
-      height = '256',
-      layers = req.params.layers || '',
-      map = req.query.map || '',
-      base_url = req.params[0],
-      url = base_url + 
-        '?bbox=' + bbox +
-        '&format=' + format +
-        '&service=' + service +
-        '&version=' + version +
-        '&request=' + request +
-        '&srs=' + srs +
-        '&width=' + width +
-        '&height=' + height +
-        '&layers=' + layers +
-        '&map=' + map +
-        '&styles=';
+  y = ((1 << z) - y - 1); // for Google/OSM tile scheme
+  var url = req.params[0] +
+    '?bbox=' + get_tile_bbox(x, y, z) +
+    '&format=' + (req.query.format || 'image/png') +
+    '&service=' + 'WMS' +
+    '&version=' + (req.query.version || '1.1.1') +
+    '&request=' + 'GetMap' +
+    '&srs=' + (req.query.srs || 'EPSG:900913') +
+    '&width=' + '256' +
+    '&height=' + '256' +
+    '&layers=' + (req.params.layers || '') +
+    '&map=' + (req.query.map || '') +
+    '&styles=' + (req.query.styles || '');
   //console.log(req.params, req.query, url);
   res.redirect(url);
 });

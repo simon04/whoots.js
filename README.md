@@ -16,9 +16,15 @@ node app
 Usage
 -----
 * `http://localhost:3000/tms/{z}/{x}/{y}/{layer}/{wms}`
-* optional parameters: `?srs={srs}` (e.g. `srs=EPGS:3857`) and `?map={map}`
+* optional GET parameters with default values (directly used for WMS request):
+* * `format=image/png`
+* * `version=1.1.1`
+* * `srs=EPGS:900913` (e.g., `srs=EPGS:3857`, see notes below)
+* * `layers=`
+* * `map=`
+* * `styles=`
 
-Notes/limitations
------------------
+Notes & limitations
+-------------------
 * Redirects only and does not reproject. Thus, make sure that the WMS server supports `EPSG:900913` (or aliases, then use `?srs={srs}`)
 * No caching
