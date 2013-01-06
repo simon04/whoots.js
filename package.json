@@ -1,11 +1,24 @@
 {
   "name": "whoots.js",
-  "version": "0.0.1",
-  "private": true,
+  "version": "0.1.0",
+  "author": "Simon Legner <Simon.Legner@gmail.com>",
+  "description": "A WMS to TMS proxy",
   "scripts": {
     "start": "node app"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/simon04/whoots.js.git"
+  },
+  "keywords": [
+    "wms",
+    "tms",
+    "gis",
+    "proxy",
+    "server"
+  ],
   "dependencies": {
     "express": "3.0.6"
-  }
+  },
+  "license": "GPL"
 }
